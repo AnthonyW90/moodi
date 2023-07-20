@@ -1,7 +1,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { auth } from '@clerk/nextjs';
 
-export default function Home() {
+export default async function Home() {
+	const { userId } = await auth();
+
+	let href = userId ? '/journal' : '/new-user';
+
 	return (
 		<div className="text-white w-screen h-screen bg-slate-900">
 			<div className="max-w-[600px] mx-auto w-full h-full flex justify-center items-center flex-col sm:flex-row gap-8">
@@ -19,7 +24,7 @@ export default function Home() {
 						emotions behind each of your entries.
 					</p>
 					<div>
-						<Link href={'/journal'}>
+						<Link href={href}>
 							<button className="bg-fuchsia-700 px-4 py-2 rounded-lg text-xl tracking-tighter">
 								get started
 							</button>
