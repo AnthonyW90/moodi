@@ -20,7 +20,7 @@ export default function Home() {
 					</p>
 					<div>
 						<Link href={'/'}>
-							<button className="bg-blue-400 px-4 py-2 rounded-lg text-xl tracking-tighter">
+							<button className="bg-fuchsia-700 px-4 py-2 rounded-lg text-xl tracking-tighter">
 								get started
 							</button>
 						</Link>
