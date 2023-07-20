@@ -19,7 +19,7 @@ export default function Home() {
 						emotions behind each of your entries.
 					</p>
 					<div>
-						<Link href={'/'}>
+						<Link href={'/journal'}>
 							<button className="bg-fuchsia-700 px-4 py-2 rounded-lg text-xl tracking-tighter">
 								get started
 							</button>
