@@ -1,6 +1,7 @@
+import { analyze } from "@/utils/ai"
 import { getUserByClerkId } from "@/utils/auth"
 import { prisma } from "@/utils/db"
-import { User } from "@prisma/client"
+import { Analysis, User } from "@prisma/client"
 import { NextResponse } from "next/server"
 
 type Props = {
@@ -24,5 +25,20 @@ export const PATCH = async (request: Request, { params }: Props) => {
        }
    })
 
-   return NextResponse.json({ data: updatedEntry })
+   const analysis = await analyze(updatedEntry.content) as Analysis
+
+   const updatedAnalysis = await prisma.analysis.upsert({
+      where: {
+         entryId: updatedEntry.id
+      },
+      create: {
+         ...analysis,
+         entryId: updatedEntry.id
+      },
+      update: {
+         ...analysis
+      }
+   })
+
+   return NextResponse.json({ data: {...updatedEntry, analysis: updatedAnalysis } })
 }
