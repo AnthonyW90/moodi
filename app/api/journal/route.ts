@@ -21,13 +21,13 @@ export const POST = async () => {
       }
    })
 
-   const analysis = await analyze(journal.content) as Analysis
-   await prisma.analysis.create({
-      data: {
-         ...analysis,
-         entryId: journal.id
-      }
-   })
+   // const analysis = await analyze(journal.content) as Analysis
+   // await prisma.analysis.create({
+   //    data: {
+   //       ...analysis,
+   //       entryId: journal.id
+   //    }
+   // })
 
    revalidatePath('/journal')
 

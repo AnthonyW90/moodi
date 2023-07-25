@@ -9,10 +9,19 @@ type Props = {
 	entry: JournalEntry;
 };
 
+const blankAnalysis = {
+	mood: '',
+	intensity: '',
+	negative: false,
+	summary: '',
+	subject: '',
+	color: '',
+};
+
 const Editor = ({ entry }: Props) => {
 	const [value, setValue] = useState(entry.content);
 	const [isLoading, setIsLoading] = useState(false);
-	const [analysis, setAnalysis] = useState(entry.analysis);
+	const [analysis, setAnalysis] = useState(entry.analysis || blankAnalysis);
 
 	useAutosave({
 		data: value,
@@ -46,6 +55,7 @@ const Editor = ({ entry }: Props) => {
 					className="w-full h-full p-8 text-xl border-0 resize-none focus:outline-none"
 					defaultValue={entry.content}
 					onChange={(e) => setValue(e.target.value)}
+					disabled={isLoading}
 				/>
 			</div>
 			<div className="border-l border-black/10">

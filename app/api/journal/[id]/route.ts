@@ -33,10 +33,12 @@ export const PATCH = async (request: Request, { params }: Props) => {
       },
       create: {
          ...analysis,
-         entryId: updatedEntry.id
+         entryId: updatedEntry.id,
+         userId: user.id
       },
       update: {
-         ...analysis
+         ...analysis,
+         userId: user.id
       }
    })
 
