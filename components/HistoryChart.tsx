@@ -1,6 +1,13 @@
 'use client';
 
-import { ResponsiveContainer, LineChart, Line, XAxis, Tooltip } from 'recharts';
+import {
+	ResponsiveContainer,
+	LineChart,
+	Line,
+	XAxis,
+	Tooltip,
+	YAxis,
+} from 'recharts';
 
 const CustomToolTip = ({ payload, label, active }) => {
 	if (!active || !payload || !payload.length) return null;
@@ -24,13 +31,14 @@ const CustomToolTip = ({ payload, label, active }) => {
 			></div>
 			<p className="label text-sm text-black/30">{dateLabel}</p>
 			<p className="intro text-xl uppercase">{analysis.mood}</p>
+			<p className="score text-4xl">{analysis.sentimentScore}</p>
 		</div>
 	);
 };
 
 const HistoryChart = ({ data }) => {
 	return (
-		<ResponsiveContainer width={'100%'} height={'100%'}>
+		<ResponsiveContainer width={'80%'} height={'80%'}>
 			<LineChart width={300} height={100} data={data}>
 				<Line
 					dataKey="sentimentScore"
@@ -40,6 +48,7 @@ const HistoryChart = ({ data }) => {
 					activeDot={{ r: 8 }}
 				/>
 				<XAxis dataKey="createdAt" />
+				<YAxis dataKey={'sentimentScore'} domain={[-10, 10]} />
 				<Tooltip content={<CustomToolTip />} />
 			</LineChart>
 		</ResponsiveContainer>

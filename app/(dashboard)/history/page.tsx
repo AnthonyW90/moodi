@@ -32,7 +32,7 @@ const HistoryPage = async () => {
 		<div className="h-full w-full">
 			<h1>History Page</h1>
 			<p>Average sentiment score: {avg}</p>
-			<div className="h-full w-full">
+			<div className="h-full w-full flex items-center justify-center">
 				<HistoryChart data={analyses} />
 			</div>
 		</div>
