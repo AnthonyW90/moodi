@@ -69,8 +69,8 @@ const Editor = ({ entry }: Props) => {
 	];
 
 	return (
-		<div className="w-full h-full grid grid-cols-3">
-			<div className="col-span-2 flex flex-col">
+		<div className="w-full h-full grid sm:grid-cols-3">
+			<div className="h-[80vh] sm:col-span-2 flex flex-col">
 				{isLoading && <p className="text-center flex">Saving...</p>}
 				<textarea
 					className="w-full h-full p-8 text-xl border-0 resize-none focus:outline-none flex-1"
