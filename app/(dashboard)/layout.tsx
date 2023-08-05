@@ -1,29 +1,26 @@
-import { UserButton } from '@clerk/nextjs';
-import Link from 'next/link';
-import { PropsWithChildren } from 'react';
+'use client';
 
-const links = [
-	{ href: '/', label: 'Home' },
-	{ href: '/journal', label: 'Journal' },
-	{ href: '/history', label: 'History' },
-];
+import Sidebar from '@/components/Sidebar';
+import { UserButton } from '@clerk/nextjs';
+import { Bars3Icon } from '@heroicons/react/24/outline';
+import { PropsWithChildren, useState } from 'react';
 
 const DashboardLayout = ({ children }: PropsWithChildren) => {
+	const [sidebarOpen, setSidebarOpen] = useState(false);
 	return (
 		<div className="h-screen w-screen relative">
-			<aside className="hidden md:absolute w-[200px] top-0 left-0 h-full border-r border-slate-900/10">
-				<div className="text-3xl font-bold text-center my-4">Moodi</div>
-				<ul>
-					{links.map(({ href, label }) => (
-						<li key={label} className="px-2 py-6 text-xl">
-							<Link href={href}>{label}</Link>
-						</li>
-					))}
-				</ul>
-			</aside>
+			<Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
 			<div className="ml-0 md:ml-[200px] h-full">
 				<header className="h-[60px] border-b border-slate-900/10">
-					<div className="h-full flex items-center justify-end px-4">
+					<div className="h-full flex items-center justify-between md:justify-end px-4">
+						<button
+							type="button"
+							className="md:hidden -m-2.5 p-2.5 text-gray-700"
+							onClick={() => setSidebarOpen(true)}
+						>
+							<span className="sr-only">Open Sidebar</span>
+							<Bars3Icon className="h-6 w-6" aria-hidden="true" />
+						</button>
 						<UserButton />
 					</div>
 				</header>
