@@ -11,7 +11,7 @@ const links = [
 const DashboardLayout = ({ children }: PropsWithChildren) => {
 	return (
 		<div className="h-screen w-screen relative">
-			<aside className="absolute w-[200px] top-0 left-0 h-full border-r border-slate-900/10">
+			<aside className="hidden md:absolute w-[200px] top-0 left-0 h-full border-r border-slate-900/10">
 				<div className="text-3xl font-bold text-center my-4">Moodi</div>
 				<ul>
 					{links.map(({ href, label }) => (
@@ -21,7 +21,7 @@ const DashboardLayout = ({ children }: PropsWithChildren) => {
 					))}
 				</ul>
 			</aside>
-			<div className="ml-[200px] h-full">
+			<div className="ml-0 md:ml-[200px] h-full">
 				<header className="h-[60px] border-b border-slate-900/10">
 					<div className="h-full flex items-center justify-end px-4">
 						<UserButton />

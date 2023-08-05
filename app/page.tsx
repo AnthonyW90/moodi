@@ -18,14 +18,16 @@ export default async function Home() {
 					alt=""
 				/>
 				<div className="w-full max-w-[600px] mx-auto">
-					<h1 className="text-6xl mb-4">AI-Powered Mood Journaling</h1>
-					<p className="text-2xl text-white/60 mb-4">
+					<h1 className="text-6xl mb-4 text-center sm:text-left">
+						AI-Powered Mood Journaling
+					</h1>
+					<p className="text-2xl text-white/60 mb-4 text-center sm:text-left">
 						Go beyond just words. Let Moodi interpret the underlying moods and
 						emotions behind each of your entries.
 					</p>
-					<div>
+					<div className="flex justify-center sm:justify-start mt-8 sm:mt-0">
 						<Link href={href}>
-							<button className="bg-fuchsia-700 px-4 py-2 rounded-lg text-xl tracking-tighter">
+							<button className="bg-fuchsia-700 px-8 py-4 sm:px-4 sm:py-2 mr-4 sm:mr-0 rounded-lg sm:text-xl tracking-tight uppercase">
 								get started
 							</button>
 						</Link>
